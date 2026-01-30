@@ -1,0 +1,6 @@
+launch:
+  - node:
+      pkg: cipher_node
+      exec: cipher_node
+      name: cipher_node
+      output: screen

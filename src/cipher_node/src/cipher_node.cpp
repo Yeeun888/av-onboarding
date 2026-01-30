@@ -32,7 +32,7 @@ class CipherNode : public rclcpp::Node {
             std::string shift;
 
             while(rclcpp::ok()) {
-                std::cout << "Enter Message ('quit' to exit): ";
+                std::cout << "Enter Message ('quit' / 'CTRL-D' to exit): ";
                 std::getline(std::cin, msg);
 
                 if (msg == "quit") {
@@ -53,7 +53,6 @@ class CipherNode : public rclcpp::Node {
                 // Keep track of last encoded message
                 last_published_unencrypted_ = msg;
 
-                // TODO: Uncomment for debugging
                 RCLCPP_INFO(this->get_logger(), "Publishing '%s'", message.message.c_str());
                 publisher_->publish(message);
             }
@@ -62,7 +61,7 @@ class CipherNode : public rclcpp::Node {
         void verify_answer(const std::shared_ptr<cipher_interfaces::srv::CipherAnswer::Request> req,
             std::shared_ptr<cipher_interfaces::srv::CipherAnswer::Response> res) {
                 // TODO: Uncomment for final
-                RCLCPP_INFO(this->get_logger(), "Last Pub: '%s' Received: %s", last_published_unencrypted_.c_str(), req->answer.c_str());
+                // RCLCPP_INFO(this->get_logger(), "Last Pub: '%s' Received: %s", last_published_unencrypted_.c_str(), req->answer.c_str());
                 if (req->answer == last_published_unencrypted_) {
                     res->result = true;
                 } else {

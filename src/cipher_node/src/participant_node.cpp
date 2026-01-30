@@ -29,6 +29,7 @@ class ParticipantNode : public rclcpp::Node {
             // Create result and test caesar_unshifter
             auto req = std::make_shared<cipher_interfaces::srv::CipherAnswer::Request>();
             req->answer = caesar_unshifter(msg.message, msg.key);
+            RCLCPP_INFO(this->get_logger(), "Undecoded message: %s", req->answer.c_str());
             client_->async_send_request(req,
                 [this](rclcpp::Client<cipher_interfaces::srv::CipherAnswer>::SharedFuture future) {
                     if (future.get()->result) {
