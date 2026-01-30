@@ -32,6 +32,6 @@ To launch the main node do
 ros2 launch cipher_node cipher_launch.yaml.
 Alternatively, you can launch the packages individually 
 ```
+```
 ros2 run cipher_node cipher_node
 ros2 run cipher_node participant_node
-```
