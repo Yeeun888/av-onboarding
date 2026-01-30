@@ -1,11 +1,15 @@
 # What is this
 AV onboarding task, demonstates a simple two node setup where 
+
 **Node 1 (Main Node)**
+
 Has two main goals: 
 1. Broadcasting an encrypted message (through caesar cipher) to a topic with a key
 2. Keeping track of the *unencrypted* message
 3. Host a service where nodes can call upon it to check if their unencryption algorithm is correct
+
 **Node 2 (Participant Node)**
+
 1. Subscribe to the topic
 2. Decrypt message
 3. Call upon the service to verify itself
